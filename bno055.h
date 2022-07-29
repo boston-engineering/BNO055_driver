@@ -284,13 +284,13 @@ typedef unsigned long int u64; /**< used for unsigned 64bit */
 /**\name    BUS READ AND WRITE FUNCTIONS           */
 /***************************************************************/
 #define BNO055_WR_FUNC_PTR       s8 (*bus_write) \
-        (void *, u8, u8, u8 *, u8)
+        (void *user_data, u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 wr_len)
 
 #define BNO055_BUS_WRITE_FUNC(dev_addr, reg_addr, reg_data, wr_len) \
     bus_write(p_bno055->user_data, dev_addr, reg_addr, reg_data, wr_len)
 
 #define BNO055_RD_FUNC_PTR       s8 \
-    (*bus_read)(void *, u8, u8, u8 *, u8)
+    (*bus_read)(void *user_data, u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 r_len)
 
 #define BNO055_BUS_READ_FUNC(dev_addr, reg_addr, reg_data, r_len) \
     bus_read(p_bno055->user_data, dev_addr, reg_addr, reg_data, r_len)
